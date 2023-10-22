@@ -1,0 +1,78 @@
+# depslib dependency file v1.0
+1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\budgetmeneger.cpp
+
+1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\changeofbalance.cpp
+
+1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\date.cpp
+
+1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\expense.cpp
+
+1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\expensesfile.cpp
+
+1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\financialapp.cpp
+
+1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\income.cpp
+
+1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\incomesfile.cpp
+
+1303067212 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\markup.cpp
+	<stdio.h>
+	"Markup.h"
+	<errno.h>
+	<iconv.h>
+	<windows.h>
+	<mbstring.h>
+
+1303067212 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\markup.h
+	<stdlib.h>
+	<string.h>
+	<string>
+	<afx.h>
+
+1697893741 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\user.cpp
+	"User.h"
+
+1697893643 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\user.h
+	<iostream>
+
+1697911807 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\userfile.cpp
+	"UserFile.h"
+
+1697911632 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\userfile.h
+	<iostream>
+	<vector>
+	"Markup.h"
+	<fstream>
+	<cstdlib>
+	"User.h"
+	"TextFile.h"
+
+1697909415 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\textfile.h
+	"Markup.h"
+	<fstream>
+	<sstream>
+
+1697911942 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\usermeneger.cpp
+	"UserMeneger.h"
+
+1697911632 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\usermeneger.h
+	<iostream>
+	<vector>
+	<windows.h>
+	<fstream>
+	<sstream>
+	"UserFile.h"
+
+1697966956 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\main.cpp
+	<iostream>
+	"UserMeneger.h"
+	"Date.h"
+
+1697909415 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\textfile.cpp
+	"TextFile.h"
+
+1697967243 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\date.h
+	<iostream>
+	<time.h>
+	<vector>
+
