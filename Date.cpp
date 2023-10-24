@@ -16,21 +16,29 @@ int Date::getTodayDate()
 
 int Date::selectDate()
 {
-    string stringDate = "0";
+    string dateString = "0";
 
-    cout << "Czy z dzisiejsza data? " << "tak: nacisnij 't'" << endl << "nie: nacisnij dowolny inny znak" << endl.
+    cout << "Czy z dzisiejsza data? " << "tak: nacisnij 't'" << endl << "nie: nacisnij dowolny inny znak" << endl;
 
     if (AuxiliaryMethods::loadChar() == 't')
-        getTodayDate();
+        return getTodayDate();
 
     else
     {
-        while(!isDateCorrect(stringDate))
+        while(!isDateCorrect(dateString))
         {
             cout << "Podaj date w formacie rrrr-mm-dd" << endl;
-            stringDate = AuxiliaryMethods::loadLine()
+            dateString = AuxiliaryMethods::loadLine();
         }
+        return convertStringDateToInt(dateString);
     }
+}
+
+int Date::convertStringDateToInt(string dateString)
+{
+    string DateWithoutDashes = dateString.erase(4,6) + dateString.substr(5,2) + dateString.substr(8,2);
+
+    return AuxiliaryMethods::convertStringToInt(DateWithoutDashes);
 }
 
 bool Date::isDateCorrect(string stringDate)
@@ -39,12 +47,15 @@ bool Date::isDateCorrect(string stringDate)
     string monthString = "";
     string dayString = "";
     int yearInt, monthInt, dayInt;
+    size_t textPosition = 0;
 
-    //stringDate = "2022-8-5";
+    if (stringDate.size() != 10)
+        return false;
 
-    for (int textPosition = 0; textPosition < 4; textPosition++)
+    while (stringDate[textPosition] != '-')
     {
         yearString += stringDate[textPosition];
+        textPosition++;
     }
 
     yearInt = atoi(yearString.c_str());
@@ -52,10 +63,10 @@ bool Date::isDateCorrect(string stringDate)
     if (yearInt < 2000 || yearInt >= getTodayDate() / 1000)
         return false;
 
-    int textPosition = 5;
+    textPosition = 5;
     while (stringDate[textPosition] != '-')
     {
-        monthString += stringDate[i];
+        monthString += stringDate[textPosition];
         textPosition++;
     }
 
@@ -76,7 +87,7 @@ bool Date::isDateCorrect(string stringDate)
     if(!isDayCorrect(dayInt, monthInt, yearInt))
         return false;
 
-    else if (convertDateToNumber(dayInt, monthInt, yearInt) > getTodayDate())
+    else if ((yearInt * 10000 + monthInt * 100 + dayInt) > getTodayDate())
         return false;
 
     else
@@ -93,7 +104,7 @@ bool Date::isDayCorrect(int day, int month, int year)
     else if (month == 2 && isYearLeap(year) == false)
         maxDayNumber = 28;
 
-    else if (month % 2 == 0)
+    else if ((month == 4) || (month == 6) || (month = 9) || (month == 11))
         maxDayNumber = 30;
 
     else
@@ -117,9 +128,3 @@ bool Date::isYearLeap(int year)
     else
         return false;
 }
-
-int Date::convertDateToNumber(int day, int month, int year)
-{
-    return year * 10000 + month * 100 + day;
-}
-

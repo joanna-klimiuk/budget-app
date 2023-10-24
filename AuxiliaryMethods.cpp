@@ -1,12 +1,21 @@
 #include "AuxiliaryMethods.h"
-/*
-string AuxiliaryMethods::konwerjsaIntNaString(int liczba)
+
+string AuxiliaryMethods::convertIntToString(int number)
 {
     ostringstream ss;
-    ss << liczba;
+    ss << number;
     string str = ss.str();
     return str;
-}*/
+}
+
+int AuxiliaryMethods::convertStringToInt(string number)
+{
+    int numberInt;
+    istringstream iss(number);
+    iss >> numberInt;
+
+    return numberInt;
+}
 
 string AuxiliaryMethods::loadLine()
 {
