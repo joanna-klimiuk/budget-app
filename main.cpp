@@ -17,6 +17,7 @@ int main()
 
     Date date;
     cout << date.getTodayDate();
+    date.selectDate();
 
     return 0;
 }

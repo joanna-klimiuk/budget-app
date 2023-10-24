@@ -3,7 +3,8 @@
 
 1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\changeofbalance.cpp
 
-1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\date.cpp
+1698129042 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\date.cpp
+	"Date.h"
 
 1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\expense.cpp
 
@@ -35,8 +36,9 @@
 1697893643 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\user.h
 	<iostream>
 
-1697911807 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\userfile.cpp
+1698128668 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\userfile.cpp
 	"UserFile.h"
+	"AuxiliaryMethods.h"
 
 1697911632 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\userfile.h
 	<iostream>
@@ -63,7 +65,7 @@
 	<sstream>
 	"UserFile.h"
 
-1697966956 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\main.cpp
+1698129122 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\main.cpp
 	<iostream>
 	"UserMeneger.h"
 	"Date.h"
@@ -71,8 +73,17 @@
 1697909415 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\textfile.cpp
 	"TextFile.h"
 
-1697967243 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\date.h
-	<iostream>
+1698128934 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\date.h
 	<time.h>
 	<vector>
+	<iostream>
+	"AuxiliaryMethods.h"
+
+1698128759 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\auxiliarymethods.cpp
+	"AuxiliaryMethods.h"
+
+1698128784 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\auxiliarymethods.h
+	<iostream>
+	<algorithm>
+	<sstream>
 

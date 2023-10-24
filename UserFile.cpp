@@ -1,4 +1,5 @@
 #include "UserFile.h"
+#include "AuxiliaryMethods.h"
 
 void UserFile::addUserToTheFile(User user)
 {
