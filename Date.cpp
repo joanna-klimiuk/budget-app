@@ -41,37 +41,53 @@ int Date::convertStringDateToInt(string dateString)
     return AuxiliaryMethods::convertStringToInt(DateWithoutDashes);
 }
 
-bool Date::isDateCorrect(string dateString)
+bool Date::isDateCorrect(string stringDate)
 {
     string yearString = "";
     string monthString = "";
     string dayString = "";
     int yearInt, monthInt, dayInt;
+    size_t textPosition = 0;
 
-    //dateString = "2022-08-05";
-
-    if (dateString.size() != 10)
+    if (stringDate.size() != 10)
         return false;
 
-    yearString = dateString.erase(4, 6);
+    while (stringDate[textPosition] != '-')
+    {
+        yearString += stringDate[textPosition];
+        textPosition++;
+    }
+
     yearInt = atoi(yearString.c_str());
 
-    if (yearInt < 2000 || yearInt > getTodayDate() / 1000)
+    if (yearInt < 2000 || yearInt >= getTodayDate() / 1000)
         return false;
 
-    monthString = dateString.substr(5,2);
+    textPosition = 5;
+    while (stringDate[textPosition] != '-')
+    {
+        monthString += stringDate[textPosition];
+        textPosition++;
+    }
+
     monthInt = atoi(monthString.c_str());
 
     if (monthInt < 1 || monthInt > 12)
         return false;
 
-    dayString = dateString.substr(8,2);
+    textPosition++;
+    while (textPosition < stringDate.size())
+    {
+        dayString += stringDate[textPosition];
+        textPosition++;
+    }
+
     dayInt = atoi(dayString.c_str());
 
     if(!isDayCorrect(dayInt, monthInt, yearInt))
         return false;
 
-    else if (yearInt * 10000 + monthInt * 100 + dayInt > getTodayDate())
+    else if ((yearInt * 10000 + monthInt * 100 + dayInt) > getTodayDate())
         return false;
 
     else
