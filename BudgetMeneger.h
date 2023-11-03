@@ -1,3 +1,6 @@
+#ifndef BUDGETMENEGER_H
+#define BUDGETMENEGER_H
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -19,7 +22,6 @@ class BudgetMeneger
 
     Transaction enterTransactionDetails();
     void separateTransactionsIntoExpensesAndIncomes();
-    bool compareDates (Transaction &transaction1, Transaction &transaction2);
     void displayTransaction(Transaction transaction);
 
 public:
@@ -34,3 +36,5 @@ public:
     void addExpense();
     void showTransactions();
 };
+
+#endif

@@ -59,3 +59,8 @@ void Transaction::setTransactionType(string transactionType)
 {
     this -> transactionType = transactionType;
 }
+
+bool Transaction::compareDates (Transaction &transaction1, Transaction &transaction2)
+{
+    return (transaction1.transactionDate <  transaction2.transactionDate);
+}

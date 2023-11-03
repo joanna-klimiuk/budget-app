@@ -28,6 +28,8 @@ public:
     void setAmount(double amount);
     void setItem(string item);
     void setTransactionType(string transactionType);
+
+    static bool compareDates (Transaction &transaction1, Transaction &transaction2);
 };
 
 #endif

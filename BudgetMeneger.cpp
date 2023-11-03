@@ -69,25 +69,21 @@ void BudgetMeneger::separateTransactionsIntoExpensesAndIncomes()
     }
 }
 
-bool BudgetMeneger::compareDates (Transaction &transaction1, Transaction &transaction2)
-{
-    return (transaction1.getTransactionDate() <  transaction2.getTransactionDate());
-}
+
 
 void BudgetMeneger::showTransactions()
 {
     int dateFrom, dateTo;
     int sumOfIncomes = 0;
     int sumOfExpenses = 0;
-    int balance = 0;
     cout << "Podaj okres czasu:" << endl << "Od: ";
     dateFrom = Date::selectDate();
 
     cout << endl << "Do: ";
     dateTo = Date::selectDate();
 
-    sort(incomes.begin(), incomes.end(), compareDates);
-    sort(expenses.begin(), expenses.end(), compareDates);
+    sort(incomes.begin(), incomes.end(), Transaction::compareDates);
+    sort(expenses.begin(), expenses.end(), Transaction::compareDates);
 
     for(size_t i = 0; i < incomes.size(); i++)
     {
