@@ -10,12 +10,11 @@ class FinancialApp
 {
     UserMeneger userMeneger;
     BudgetMeneger *budgetMeneger;
-    const string FILE_WITH_EXPENSES;
-    const string FILE_WITH_INCOMES;
+    const string TRANSACTION_FILE_NAME;
 
 public:
-    FinancialApp(string UserFileName, string ExpensesFileName, string IncomesFileName)
-        : userMeneger(UserFileName), FILE_WITH_EXPENSES(ExpensesFileName), FILE_WITH_INCOMES(IncomesFileName)
+    FinancialApp(string UserFileName, string TransactionFileName)
+        : userMeneger(UserFileName), TRANSACTION_FILE_NAME(TransactionFileName)
     {
         budgetMeneger = NULL;
     };
@@ -26,11 +25,15 @@ public:
         budgetMeneger = NULL;
     }
 
-  /*  void rejestracjaUzytkownika();
-    void logowanieUzytkownika();
-    void wypiszWszystkichUzytkownikow();
-    void zmianaHaslaZalogowanegoUzytkownika();
-    void wylogujUzytkownika();
+    void userRegister();
+    void displayAllUsers();
+    void userLogIn();
+
+    void addIncome();
+    void addExpense();
+    void showTransactions();
+
+  /*
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
     bool czyUzytkownikJestZalogowany();

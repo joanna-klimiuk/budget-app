@@ -44,6 +44,31 @@ char AuxiliaryMethods::loadChar()
     }
     return output;
 }
+
+double AuxiliaryMethods::loadAmount()
+{
+    string input = "";
+    int amount = 0;
+    cin.sync();
+
+    while (true)
+    {
+        getline(cin, input);
+
+        for (size_t i = 0; i << input.size(); i++)
+        {
+            if (input[i] == ',')
+                input.replace(i, 1, ".");
+        }
+
+        stringstream myStream(input);
+        if (myStream >> amount)
+            break;
+        cout << "To nie jest liczba. Wpisz ponownie. " << endl;
+    }
+    return amount;
+}
+
 /*
 int AuxiliaryMethods::wczytajLiczbeCalkowita()
 {

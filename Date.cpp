@@ -16,22 +16,14 @@ int Date::getTodayDate()
 
 int Date::selectDate()
 {
-    string dateString = "0";
+    string dateString = "";
 
-    cout << "Czy z dzisiejsza data? " << "tak: nacisnij 't'" << endl << "nie: nacisnij dowolny inny znak" << endl;
-
-    if (AuxiliaryMethods::loadChar() == 't')
-        return getTodayDate();
-
-    else
+    while(!isDateCorrect(dateString))
     {
-        while(!isDateCorrect(dateString))
-        {
-            cout << "Podaj date w formacie rrrr-mm-dd" << endl;
-            dateString = AuxiliaryMethods::loadLine();
-        }
-        return convertStringDateToInt(dateString);
+        cout << "Podaj date w formacie rrrr-mm-dd" << endl;
+        dateString = AuxiliaryMethods::loadLine();
     }
+    return convertStringDateToInt(dateString);
 }
 
 int Date::convertStringDateToInt(string dateString)
@@ -41,7 +33,7 @@ int Date::convertStringDateToInt(string dateString)
     return AuxiliaryMethods::convertStringToInt(DateWithoutDashes);
 }
 
-bool Date::isDateCorrect(string stringDate)
+bool Date::isDateCorrect(string dateString)
 {
     string yearString = "";
     string monthString = "";
@@ -49,12 +41,12 @@ bool Date::isDateCorrect(string stringDate)
     int yearInt, monthInt, dayInt;
     size_t textPosition = 0;
 
-    if (stringDate.size() != 10)
+    if (dateString.size() != 10)
         return false;
 
-    while (stringDate[textPosition] != '-')
+    while (dateString[textPosition] != '-')
     {
-        yearString += stringDate[textPosition];
+        yearString += dateString[textPosition];
         textPosition++;
     }
 
@@ -64,9 +56,9 @@ bool Date::isDateCorrect(string stringDate)
         return false;
 
     textPosition = 5;
-    while (stringDate[textPosition] != '-')
+    while (dateString[textPosition] != '-')
     {
-        monthString += stringDate[textPosition];
+        monthString += dateString[textPosition];
         textPosition++;
     }
 
@@ -76,9 +68,9 @@ bool Date::isDateCorrect(string stringDate)
         return false;
 
     textPosition++;
-    while (textPosition < stringDate.size())
+    while (textPosition < dateString.size())
     {
-        dayString += stringDate[textPosition];
+        dayString += dateString[textPosition];
         textPosition++;
     }
 

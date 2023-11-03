@@ -1,23 +1,23 @@
 #include <iostream>
-#include "UserMeneger.h"
-#include "Date.h"
+#include "financialApp.h"
+
 
 
 using namespace std;
 
 int main()
 {
-  //  UserMeneger userMeneger("users.xml");
- //   UserFile userFile("users.xml");
- //   userFile.loadUsersFromFile();
+    FinancialApp financialApp("users.xml", "transactions.xml");
+
+    financialApp.userLogIn();
+    financialApp.addIncome();
+    financialApp.addIncome();
+    financialApp.addExpense();
+    financialApp.addExpense();
+
+    financialApp.showTransactions();
 
 
-  //  userMeneger.userLogIn();
-  //  userMeneger.displayAllUsers();
-
-    Date date;
-    cout << date.getTodayDate();
-    cout << date.selectDate();
 
     return 0;
 }
