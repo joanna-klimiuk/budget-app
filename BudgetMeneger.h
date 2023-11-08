@@ -23,6 +23,7 @@ class BudgetMeneger
     Transaction enterTransactionDetails();
     void separateTransactionsIntoExpensesAndIncomes();
     void displayTransaction(Transaction transaction);
+    void showTransactions(int dateFrom, int dateTo);
 
 public:
     BudgetMeneger(string TransactionFileName, int loggedInUserId)
@@ -34,7 +35,9 @@ public:
 
     void addIncome();
     void addExpense();
-    void showTransactions();
+    void showBalanceOfCurrentMonth();
+    void showBalanceOfPreviousMonth();
+    void showBalanceOfSelectedPeriod();
 };
 
 #endif

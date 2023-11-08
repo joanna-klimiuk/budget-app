@@ -11,13 +11,13 @@ void UserMeneger::userRegister()
     system("pause");
 }
 
-void UserMeneger::displayAllUsers()
+/*void UserMeneger::displayAllUsers()
 {
     for (auto user : users)
     {
         cout << user.getId() << ". login: " << user.getLogin() << ", imie i nazwisko: " << user.getName() << " " << user.getSurname() << endl;
     }
-}
+}*/
 
 void UserMeneger::userLogIn()
 {
@@ -79,7 +79,8 @@ void UserMeneger::changePassword()
             system("pause");
         }
     }
-   // userFile.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+
+//    userFile.updateUsersPasswordInTheFile(AuxiliaryMethods::convertIntToString(LoggedInUserId), newPassword);
 }
 
 void UserMeneger::logOut()

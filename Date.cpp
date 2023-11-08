@@ -17,6 +17,7 @@ int Date::getTodayDate()
 int Date::selectDate()
 {
     string dateString = "";
+    cin.sync();
 
     while(!isDateCorrect(dateString))
     {
@@ -31,6 +32,26 @@ int Date::convertStringDateToInt(string dateString)
     string DateWithoutDashes = dateString.erase(4,6) + dateString.substr(5,2) + dateString.substr(8,2);
 
     return AuxiliaryMethods::convertStringToInt(DateWithoutDashes);
+}
+
+int Date::getLastDayOfPreviousMonth()
+{
+    int today = getTodayDate();
+    int previousMonth, year;
+
+    if ((today / 100) % 100 == 1)
+    {
+        year = (today / 10000) - 1;
+        return year * 10000 + 1231;
+    }
+
+    else
+    {
+        previousMonth = (today % 10000) - 1;
+        year = today / 10000;
+        return year * 10000 + previousMonth * 100 + maxDayNumber(previousMonth, year);
+    }
+
 }
 
 bool Date::isDateCorrect(string dateString)
@@ -76,7 +97,7 @@ bool Date::isDateCorrect(string dateString)
 
     dayInt = atoi(dayString.c_str());
 
-    if(!isDayCorrect(dayInt, monthInt, yearInt))
+    if (dayInt > maxDayNumber(monthInt, yearInt))
         return false;
 
     else if ((yearInt * 10000 + monthInt * 100 + dayInt) > getTodayDate())
@@ -86,6 +107,21 @@ bool Date::isDateCorrect(string dateString)
         return true;
 }
 
+int Date::maxDayNumber(int month, int year)
+{
+    if (month == 2 && isYearLeap(year) == true)
+        return 29;
+
+    else if (month == 2 && isYearLeap(year) == false)
+        return 28;
+
+    else if ((month == 4) || (month == 6) || (month = 9) || (month == 11))
+        return 30;
+
+    else
+        return 31;
+}
+/*
 bool Date::isDayCorrect(int day, int month, int year)
 {
     int maxDayNumber;
@@ -107,7 +143,7 @@ bool Date::isDayCorrect(int day, int month, int year)
 
     else
         return false;
-}
+}*/
 
 bool Date::isYearLeap(int year)
 {

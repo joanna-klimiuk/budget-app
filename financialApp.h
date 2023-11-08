@@ -26,12 +26,22 @@ public:
     }
 
     void userRegister();
-    void displayAllUsers();
+  //  void displayAllUsers();
     void userLogIn();
+    bool isUserLoggedIn();
+    void userLogOut();
+    void changePasswordOfLoggedInUser();
 
     void addIncome();
     void addExpense();
-    void showTransactions();
+    void showBalanceOfCurrentMonth();
+    void showBalanceOfPreviousMonth();
+    void showBalanceOfSelectedPeriod();
+
+    char selectOptionsFromMainMenu();
+    char selectOptionFromAppMenu();
+
+
 
   /*
     void dodajAdresata();

@@ -20,4 +20,13 @@
 <Name>Michalski</Name>
 <Surname>Michalski</Surname>
 </User>
-</Users>
+<User>
+<UserId>4</UserId>
+<Login>Otello</Login>
+<Password>123</Password>
+<Name>Oti</Name>
+<Surname>Pol</Surname>
+<Users>
+<Users/>
+<Users/>
+<Users/>
