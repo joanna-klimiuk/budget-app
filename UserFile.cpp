@@ -3,7 +3,7 @@
 
 void UserFile::addUserToTheFile(User user)
 {
-    bool bSuccess = xml.Load("users.xml");
+    bool bSuccess = xml.Load(FILE_NAME);
 
     if(!bSuccess)
     {
@@ -20,7 +20,35 @@ void UserFile::addUserToTheFile(User user)
     xml.AddElem("Name", user.getName());
     xml.AddElem("Surname", user.getSurname());
 
-    xml.Save("users.xml");
+    xml.Save(FILE_NAME);
+}
+
+void UserFile::updateUsersPasswordInTheFile(string loggedInUserIdString, string newPassword)
+{
+    string userIdString;
+    cout << "Przeslane id: " << loggedInUserIdString << endl;
+
+    if(xml.Load(FILE_NAME))
+    {
+        xml.FindElem();
+        xml.IntoElem();
+
+        while (xml.FindElem("User"))
+        {
+            xml.IntoElem();
+            xml.FindElem("UserId");
+            userIdString = xml.GetData();
+
+            if (loggedInUserIdString == userIdString)
+            {
+                xml.FindElem("Password");
+                xml.SetData(newPassword);
+                break;
+            }
+            xml.OutOfElem();
+        }
+    }
+    xml.Save(FILE_NAME);
 }
 
 vector <User> UserFile::loadUsersFromFile()
@@ -29,7 +57,7 @@ vector <User> UserFile::loadUsersFromFile()
     User user;
     vector <User> users;
 
-    bool bSuccess = xml.Load("users.xml");
+    bool bSuccess = xml.Load(FILE_NAME);
 
     xml.ResetPos();
     xml.FindElem(); //jestesmy w Users
@@ -58,75 +86,3 @@ vector <User> UserFile::loadUsersFromFile()
     }
     return users;
 }
-/*
-Uzytkownik PlikZUzytkownikami::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
-{
-    Uzytkownik uzytkownik;
-    string pojedynczaDanaUzytkownika = "";
-    int numerPojedynczejDanejUzytkownika = 1;
-
-    for (size_t pozycjaZnaku = 0; pozycjaZnaku < daneJednegoUzytkownikaOddzielonePionowymiKreskami.length(); pozycjaZnaku++)
-    {
-        if (daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku] != '|')
-        {
-            pojedynczaDanaUzytkownika += daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku];
-        }
-        else
-        {
-            switch(numerPojedynczejDanejUzytkownika)
-            {
-            case 1:
-                uzytkownik.ustawId(atoi(pojedynczaDanaUzytkownika.c_str()));
-                break;
-            case 2:
-                uzytkownik.ustawLogin(pojedynczaDanaUzytkownika);
-                break;
-            case 3:
-                uzytkownik.ustawHaslo(pojedynczaDanaUzytkownika);
-                break;
-            }
-            pojedynczaDanaUzytkownika = "";
-            numerPojedynczejDanejUzytkownika++;
-        }
-    }
-    return uzytkownik;
-}
-
-void PlikZUzytkownikami::zapiszWszystkichUzytkownikowDoPliku(vector <Uzytkownik> uzytkownicy)
-{
-    fstream plikTekstowy;
-    string liniaZDanymiUzytkownika = "";
-
-    plikTekstowy.open(NAZWA_PLIKU.c_str(), ios::out);
-
-    if (plikTekstowy.good() == true)
-    {
-        for (size_t i = 0; i < uzytkownicy.size(); i++)
-        {
-            liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownicy[i]);
-
-            if (i == uzytkownicy.size() - 1)
-            {
-               plikTekstowy << liniaZDanymiUzytkownika;
-            }
-            else
-            {
-                plikTekstowy << liniaZDanymiUzytkownika << endl;
-            }
-
-            liniaZDanymiUzytkownika = "";
-        }
-    }
-}
-
-string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik)
-{
-    string liniaZDanymiUzytkownika = "";
-
-    liniaZDanymiUzytkownika += MetodyPomocnicze::konwerjsaIntNaString(uzytkownik.pobierzId())+ '|';
-    liniaZDanymiUzytkownika += uzytkownik.pobierzLogin() + '|';
-    liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
-
-    return liniaZDanymiUzytkownika;
-}
-*/

@@ -8,6 +8,14 @@ string AuxiliaryMethods::convertIntToString(int number)
     return str;
 }
 
+string AuxiliaryMethods::convertDoubleToString(double number)
+{
+    ostringstream ss;
+    ss << number;
+    string str = ss.str();
+    return str;
+}
+
 int AuxiliaryMethods::convertStringToInt(string number)
 {
     int numberInt;
@@ -44,43 +52,27 @@ char AuxiliaryMethods::loadChar()
     }
     return output;
 }
-/*
-int AuxiliaryMethods::wczytajLiczbeCalkowita()
+
+double AuxiliaryMethods::loadAmount()
 {
-    string wejscie = "";
-    int liczba = 0;
-    cin.sync();
+    string input = "";
+    double amount = 0;
 
     while (true)
     {
-        getline(cin, wejscie);
+        cin.sync();
+        getline(cin, input);
 
-        stringstream myStream(wejscie);
-        if (myStream >> liczba)
+        for (size_t i = 0; i < input.size(); i++)
+        {
+            if (input[i] == ',')
+                input.replace(i, 1, ".");
+        }
+
+        stringstream myStream(input);
+        if (myStream >> amount)
             break;
         cout << "To nie jest liczba. Wpisz ponownie. " << endl;
     }
-    return liczba;
+    return amount;
 }
-
-string AuxiliaryMethods::pobierzLiczbe(string tekst, int pozycjaZnaku)
-{
-    string liczba = "";
-    while(isdigit(tekst[pozycjaZnaku]) == true)
-    {
-        liczba += tekst[pozycjaZnaku];
-        pozycjaZnaku ++;
-    }
-    return liczba;
-}
-
-string AuxiliaryMethods::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
-{
-    if (!tekst.empty())
-    {
-        transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
-        tekst[0] = toupper(tekst[0]);
-    }
-    return tekst;
-}
-*/

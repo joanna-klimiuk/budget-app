@@ -16,22 +16,16 @@ int Date::getTodayDate()
 
 int Date::selectDate()
 {
-    string dateString = "0";
+    string dateString = "";
+    cin.sync();
 
-    cout << "Czy z dzisiejsza data? " << "tak: nacisnij 't'" << endl << "nie: nacisnij dowolny inny znak" << endl;
-
-    if (AuxiliaryMethods::loadChar() == 't')
-        return getTodayDate();
-
-    else
+    while(!isDateCorrect(dateString))
     {
-        while(!isDateCorrect(dateString))
-        {
-            cout << "Podaj date w formacie rrrr-mm-dd" << endl;
-            dateString = AuxiliaryMethods::loadLine();
-        }
-        return convertStringDateToInt(dateString);
+        cout << "(Podaj date w formacie rrrr-mm-dd)" << endl;
+        dateString = AuxiliaryMethods::loadLine();
     }
+
+    return convertStringDateToInt(dateString);
 }
 
 int Date::convertStringDateToInt(string dateString)
@@ -41,7 +35,27 @@ int Date::convertStringDateToInt(string dateString)
     return AuxiliaryMethods::convertStringToInt(DateWithoutDashes);
 }
 
-bool Date::isDateCorrect(string stringDate)
+int Date::getLastDayOfPreviousMonth()
+{
+    int today = getTodayDate();
+    int previousMonth, year;
+
+    if ((today / 100) % 100 == 1)
+    {
+        year = (today / 10000) - 1;
+        return year * 10000 + 1231;
+    }
+
+    else
+    {
+        previousMonth = (today % 10000) - 1;
+        year = today / 10000;
+        return year * 10000 + previousMonth * 100 + maxDayNumber(previousMonth, year);
+    }
+
+}
+
+bool Date::isDateCorrect(string dateString)
 {
     string yearString = "";
     string monthString = "";
@@ -49,12 +63,12 @@ bool Date::isDateCorrect(string stringDate)
     int yearInt, monthInt, dayInt;
     size_t textPosition = 0;
 
-    if (stringDate.size() != 10)
+    if (dateString.size() != 10)
         return false;
 
-    while (stringDate[textPosition] != '-')
+    while (dateString[textPosition] != '-')
     {
-        yearString += stringDate[textPosition];
+        yearString += dateString[textPosition];
         textPosition++;
     }
 
@@ -64,9 +78,9 @@ bool Date::isDateCorrect(string stringDate)
         return false;
 
     textPosition = 5;
-    while (stringDate[textPosition] != '-')
+    while (dateString[textPosition] != '-')
     {
-        monthString += stringDate[textPosition];
+        monthString += dateString[textPosition];
         textPosition++;
     }
 
@@ -76,15 +90,15 @@ bool Date::isDateCorrect(string stringDate)
         return false;
 
     textPosition++;
-    while (textPosition < stringDate.size())
+    while (textPosition < dateString.size())
     {
-        dayString += stringDate[textPosition];
+        dayString += dateString[textPosition];
         textPosition++;
     }
 
     dayInt = atoi(dayString.c_str());
 
-    if(!isDayCorrect(dayInt, monthInt, yearInt))
+    if (dayInt > maxDayNumber(monthInt, yearInt))
         return false;
 
     else if ((yearInt * 10000 + monthInt * 100 + dayInt) > getTodayDate())
@@ -94,27 +108,19 @@ bool Date::isDateCorrect(string stringDate)
         return true;
 }
 
-bool Date::isDayCorrect(int day, int month, int year)
+int Date::maxDayNumber(int month, int year)
 {
-    int maxDayNumber;
-
     if (month == 2 && isYearLeap(year) == true)
-        maxDayNumber = 29;
+        return 29;
 
     else if (month == 2 && isYearLeap(year) == false)
-        maxDayNumber = 28;
+        return 28;
 
     else if ((month == 4) || (month == 6) || (month = 9) || (month == 11))
-        maxDayNumber = 30;
+        return 30;
 
     else
-        maxDayNumber = 31;
-
-    if (day >= 1 && day <= maxDayNumber)
-        return true;
-
-    else
-        return false;
+        return 31;
 }
 
 bool Date::isYearLeap(int year)
@@ -127,4 +133,14 @@ bool Date::isYearLeap(int year)
 
     else
         return false;
+}
+
+string Date::addDashesAndChangeDateToString(int dateInt)
+{
+    string dateWithDashes;
+    dateWithDashes = AuxiliaryMethods::convertIntToString(dateInt);
+    dateWithDashes.insert(6,"-");
+    dateWithDashes.insert(4,"-");
+
+    return dateWithDashes;
 }

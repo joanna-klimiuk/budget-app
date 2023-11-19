@@ -8,6 +8,7 @@
 #include <sstream>
 
 #include "UserFile.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
