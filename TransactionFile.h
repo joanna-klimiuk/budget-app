@@ -9,19 +9,19 @@
 #include <cstdlib>
 
 #include "Transaction.h"
-#include "TextFile.h"
 #include "AuxiliaryMethods.h"
 
 using namespace std;
 
 
-class TransactionFile :public TextFile
+class TransactionFile
 {
+   const string FILE_NAME;
    CMarkup xml;
    int lastTransactionId = 0;
 
 public:
-    TransactionFile(string nameOfTransactionFile) : TextFile(nameOfTransactionFile) {};
+    TransactionFile(string nameOfTransactionFile) : FILE_NAME(nameOfTransactionFile) {};
     int getLastTransactionId();
     void addTransactionToTheFile(Transaction transaction);
     vector <Transaction> loadTransactionsFromFile(int userID);

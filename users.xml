@@ -27,4 +27,11 @@
 <Name>Filip</Name>
 <Surname>Jedrzejewski</Surname>
 </User>
+<User>
+<UserId>5</UserId>
+<Login>Marek</Login>
+<Password>marek</Password>
+<Name>Marek</Name>
+<Surname>Klimiuk</Surname>
+</User>
 </Users>
