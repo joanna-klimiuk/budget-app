@@ -22,52 +22,35 @@ void UserFile::addUserToTheFile(User user)
 
     xml.Save(FILE_NAME);
 }
-/*
+
 void UserFile::updateUsersPasswordInTheFile(string loggedInUserIdString, string newPassword)
 {
-    string userIdString, previousPassword;
+    string userIdString;
+    cout << "Przeslane id: " << loggedInUserIdString << endl;
 
     if(xml.Load(FILE_NAME))
     {
         xml.FindElem();
         xml.IntoElem();
+
         while (xml.FindElem("User"))
         {
-            userIdString = xml.GetAttrib("UserId");
+            xml.IntoElem();
+            xml.FindElem("UserId");
+            userIdString = xml.GetData();
+
             if (loggedInUserIdString == userIdString)
             {
-                previousPassword = xml.GetData();
+                xml.FindElem("Password");
                 xml.SetData(newPassword);
                 break;
             }
+            xml.OutOfElem();
         }
-        xml.OutOfElem();
     }
-
-    xml.Save(FILE_NAME);
-}*/
-/*
-void UserFile::saveAllUsersToFile(vector <User> users)
-{
-    xml.AddElem("Users");
-    xml.FindElem();
-    xml.IntoElem();
-
-    for (size_t i = 0; i < users.size(); i++)
-    {
-        xml.AddElem("User");
-        xml.IntoElem();
-        xml.AddElem("UserId", users[i].getId());
-        xml.AddElem("Login", users[i].getLogin());
-        xml.AddElem("Password", users[i].getPassword());
-        xml.AddElem("Name", users[i].getName());
-        xml.AddElem("Surname", users[i].getSurname());
-        xml.OutOfElem();
-    }
-
     xml.Save(FILE_NAME);
 }
-*/
+
 vector <User> UserFile::loadUsersFromFile()
 {
     int userId;

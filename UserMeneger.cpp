@@ -80,7 +80,7 @@ void UserMeneger::changePassword()
         }
     }
 
-//    userFile.updateUsersPasswordInTheFile(AuxiliaryMethods::convertIntToString(LoggedInUserId), newPassword);
+    userFile.updateUsersPasswordInTheFile(AuxiliaryMethods::convertIntToString(LoggedInUserId), newPassword);
 }
 
 void UserMeneger::logOut()

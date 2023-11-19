@@ -13,11 +13,9 @@ public:
     static string loadLine();
     static char loadChar();
     static string convertIntToString(int number);
+    static string convertDoubleToString(double number);
     static int convertStringToInt(string number);
     static double loadAmount();
-  //  static int wczytajLiczbeCalkowita();
-   // static string pobierzLiczbe(string tekst, int pozycjaZnaku);
-   // static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
 };
 
 #endif

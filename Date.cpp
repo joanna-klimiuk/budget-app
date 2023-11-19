@@ -21,9 +21,10 @@ int Date::selectDate()
 
     while(!isDateCorrect(dateString))
     {
-        cout << "Podaj date w formacie rrrr-mm-dd" << endl;
+        cout << "(Podaj date w formacie rrrr-mm-dd)" << endl;
         dateString = AuxiliaryMethods::loadLine();
     }
+
     return convertStringDateToInt(dateString);
 }
 
@@ -121,29 +122,6 @@ int Date::maxDayNumber(int month, int year)
     else
         return 31;
 }
-/*
-bool Date::isDayCorrect(int day, int month, int year)
-{
-    int maxDayNumber;
-
-    if (month == 2 && isYearLeap(year) == true)
-        maxDayNumber = 29;
-
-    else if (month == 2 && isYearLeap(year) == false)
-        maxDayNumber = 28;
-
-    else if ((month == 4) || (month == 6) || (month = 9) || (month == 11))
-        maxDayNumber = 30;
-
-    else
-        maxDayNumber = 31;
-
-    if (day >= 1 && day <= maxDayNumber)
-        return true;
-
-    else
-        return false;
-}*/
 
 bool Date::isYearLeap(int year)
 {
@@ -155,4 +133,14 @@ bool Date::isYearLeap(int year)
 
     else
         return false;
+}
+
+string Date::addDashesAndChangeDateToString(int dateInt)
+{
+    string dateWithDashes;
+    dateWithDashes = AuxiliaryMethods::convertIntToString(dateInt);
+    dateWithDashes.insert(6,"-");
+    dateWithDashes.insert(4,"-");
+
+    return dateWithDashes;
 }

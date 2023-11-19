@@ -96,10 +96,10 @@ void BudgetMeneger::showBalanceOfSelectedPeriod()
     int dateFrom, dateTo;
 
     system("cls");
-    cout << "Wybierz okres czasu." << endl << "Od: " << endl;
+    cout << "Wybierz okres czasu." << endl << "Od: ";
     dateFrom = Date::selectDate();
 
-    cout << endl << "do: " << endl;
+    cout << endl << "do: ";
     dateTo = Date::selectDate();
 
     showTransactions(dateFrom, dateTo);
@@ -108,11 +108,13 @@ void BudgetMeneger::showBalanceOfSelectedPeriod()
 
 void BudgetMeneger::showTransactions(int dateFrom, int dateTo)
 {
-    int sumOfIncomes = 0;
-    int sumOfExpenses = 0;
+    double sumOfIncomes = 0;
+    double sumOfExpenses = 0;
 
     sort(incomes.begin(), incomes.end(), Transaction::compareDates);
     sort(expenses.begin(), expenses.end(), Transaction::compareDates);
+
+    cout << "Wplywy: " << endl;
 
     for(size_t i = 0; i < incomes.size(); i++)
     {
@@ -123,6 +125,8 @@ void BudgetMeneger::showTransactions(int dateFrom, int dateTo)
         }
     }
 
+    cout << endl << endl << "Wydatki: " << endl;
+
       for(size_t i = 0; i < expenses.size(); i++)
     {
         if (expenses[i].getTransactionDate() <= dateTo && expenses[i].getTransactionDate() >= dateFrom)
@@ -132,11 +136,11 @@ void BudgetMeneger::showTransactions(int dateFrom, int dateTo)
         }
     }
 
-    cout << "Saldo z prezdstawionego okresu: " << sumOfIncomes - sumOfExpenses << endl;
+    cout << endl << "Saldo z przedstawionego okresu: " << sumOfIncomes - sumOfExpenses << endl;
 }
 
 void BudgetMeneger::displayTransaction(Transaction transaction)
 {
-    cout << transaction.getTransactionDate() << " " << transaction.getAmount() << " zl " << transaction.getItem() << endl;
+    cout << Date::addDashesAndChangeDateToString(transaction.getTransactionDate()) << " " << transaction.getAmount() << " zl " << transaction.getItem() << endl;
 }
 

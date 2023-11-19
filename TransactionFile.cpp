@@ -17,7 +17,7 @@ void TransactionFile::addTransactionToTheFile(Transaction transaction)
     xml.AddElem("Type", transaction.getTransactionType());
     xml.AddElem("TransactionId", transaction.getTransactionId());
     xml.AddElem("Date", transaction.getTransactionDate());
-    xml.AddElem("Amount", transaction.getAmount());
+    xml.AddElem("Amount", AuxiliaryMethods::convertDoubleToString(transaction.getAmount()));
     xml.AddElem("Item", transaction.getItem());
 
     xml.Save(FILE_NAME);
@@ -55,7 +55,7 @@ vector <Transaction> TransactionFile::loadTransactionsFromFile(int userId)
                 xml.FindElem("Date");
                 transaction.setTransactionDate(AuxiliaryMethods::convertStringToInt(xml.GetData()));
                 xml.FindElem("Amount");
-                transaction.setAmount(AuxiliaryMethods::convertStringToInt(xml.GetData()));
+                transaction.setAmount(atof(xml.GetData().c_str()));
                 xml.FindElem("Item");
                 transaction.setItem(xml.GetData());
                 xml.OutOfElem();

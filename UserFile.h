@@ -23,8 +23,7 @@ public:
     UserFile(string nameOfUserFile) : TextFile(nameOfUserFile) {};
     void addUserToTheFile(User user);
     vector <User> loadUsersFromFile();
-//    void saveAllUsersToFile(vector <User> users);
-//    void updateUsersPasswordInTheFile(string loggedInUserIdString, string newPassword);
+    void updateUsersPasswordInTheFile(string loggedInUserIdString, string newPassword);
 };
 
 #endif
