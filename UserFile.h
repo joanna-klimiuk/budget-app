@@ -8,19 +8,19 @@
 #include <fstream>
 #include <cstdlib>
 
-//#include "MetodyPomocnicze.h"
 #include "User.h"
-#include "TextFile.h"
+
 
 using namespace std;
 
 
-class UserFile :public TextFile
+class UserFile
 {
+   const string FILE_NAME;
    CMarkup xml;
 
 public:
-    UserFile(string nameOfUserFile) : TextFile(nameOfUserFile) {};
+    UserFile(string nameOfUserFile) : FILE_NAME(nameOfUserFile) {};
     void addUserToTheFile(User user);
     vector <User> loadUsersFromFile();
     void updateUsersPasswordInTheFile(string loggedInUserIdString, string newPassword);

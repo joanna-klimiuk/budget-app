@@ -13,8 +13,6 @@ class TextFile
 protected:
     const string FILE_NAME;
 
-    bool isFileEmpty(fstream &textFile);
-
 public:
     TextFile(string fileName) : FILE_NAME(fileName) {};
 };

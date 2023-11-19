@@ -23,6 +23,9 @@ int Date::selectDate()
     {
         cout << "(Podaj date w formacie rrrr-mm-dd)" << endl;
         dateString = AuxiliaryMethods::loadLine();
+
+        if (!isDateCorrect(dateString))
+            cout << "Bledny format daty. ";
     }
 
     return convertStringDateToInt(dateString);

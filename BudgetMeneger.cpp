@@ -10,6 +10,8 @@ void BudgetMeneger::addIncome()
 
     incomes.push_back(transaction);
     transactionFile.addTransactionToTheFile(transaction);
+    cout << "Dodano przychod do bazy" << endl;
+    system("pause");
 }
 
 void BudgetMeneger::addExpense()
@@ -22,6 +24,8 @@ void BudgetMeneger::addExpense()
 
     expenses.push_back(transaction);
     transactionFile.addTransactionToTheFile(transaction);
+    cout << "Dodano wydatek do bazy" << endl;
+    system("pause");
 }
 
 Transaction BudgetMeneger::enterTransactionDetails()
@@ -124,8 +128,9 @@ void BudgetMeneger::showTransactions(int dateFrom, int dateTo)
             sumOfIncomes += incomes[i].getAmount();
         }
     }
+    cout << "Suma wplywow: " << sumOfIncomes << endl;
 
-    cout << endl << endl << "Wydatki: " << endl;
+    cout << endl << "Wydatki: " << endl;
 
       for(size_t i = 0; i < expenses.size(); i++)
     {
@@ -135,8 +140,9 @@ void BudgetMeneger::showTransactions(int dateFrom, int dateTo)
             sumOfExpenses += expenses[i].getAmount();
         }
     }
+    cout << "Suma wydatkow: " << sumOfExpenses << endl << endl;
 
-    cout << endl << "Saldo z przedstawionego okresu: " << sumOfIncomes - sumOfExpenses << endl;
+    cout << "Saldo z przedstawionego okresu: " << sumOfIncomes - sumOfExpenses << endl;
 }
 
 void BudgetMeneger::displayTransaction(Transaction transaction)
