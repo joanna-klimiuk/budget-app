@@ -11,14 +11,6 @@ void UserMeneger::userRegister()
     system("pause");
 }
 
-/*void UserMeneger::displayAllUsers()
-{
-    for (auto user : users)
-    {
-        cout << user.getId() << ". login: " << user.getLogin() << ", imie i nazwisko: " << user.getName() << " " << user.getSurname() << endl;
-    }
-}*/
-
 void UserMeneger::userLogIn()
 {
     User user;

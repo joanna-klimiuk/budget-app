@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1700420579 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\budgetmeneger.cpp
+1700422170 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\budgetmeneger.cpp
 	"BudgetMeneger.h"
 
 1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\changeofbalance.cpp
 
-1700421455 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\date.cpp
+1700422170 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\date.cpp
 	"Date.h"
 
 1697892452 source:d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\expense.cpp
@@ -42,7 +42,7 @@
 	"UserFile.h"
 	"AuxiliaryMethods.h"
 
-1700421090 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\userfile.h
+1700422170 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\userfile.h
 	<iostream>
 	<vector>
 	"Markup.h"
@@ -100,7 +100,7 @@
 1700420579 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\transaction.h
 	<iostream>
 
-1700421065 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\transactionfile.h
+1700422170 d:\nauka_programowania2\seminarium19_zarzadzanie_budzetem\budget_app\transactionfile.h
 	<iostream>
 	<vector>
 	"Markup.h"
