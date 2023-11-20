@@ -28,6 +28,43 @@ void BudgetMeneger::addExpense()
     system("pause");
 }
 
+void BudgetMeneger::showBalanceOfCurrentMonth()
+{
+    int dateFrom, dateTo;
+
+    dateTo = Date::getTodayDate();
+    dateFrom = (dateTo / 100) * 100 + 1;
+
+    showTransactions(dateFrom, dateTo);
+    system("pause");
+}
+
+void BudgetMeneger::showBalanceOfPreviousMonth()
+{
+    int dateFrom, dateTo;
+
+    dateTo = Date::getLastDayOfPreviousMonth();
+    dateFrom = (dateTo / 100) * 100 + 1;
+
+    showTransactions(dateFrom, dateTo);
+    system("pause");
+}
+
+void BudgetMeneger::showBalanceOfSelectedPeriod()
+{
+    int dateFrom, dateTo;
+
+    system("cls");
+    cout << "Wybierz okres czasu." << endl << "Od: ";
+    dateFrom = Date::selectDate();
+
+    cout << endl << "do: ";
+    dateTo = Date::selectDate();
+
+    showTransactions(dateFrom, dateTo);
+    system("pause");
+}
+
 Transaction BudgetMeneger::enterTransactionDetails()
 {
     Transaction transaction;
@@ -71,43 +108,6 @@ void BudgetMeneger::separateTransactionsIntoExpensesAndIncomes()
             expenses.push_back(transaction);
         }
     }
-}
-
-void BudgetMeneger::showBalanceOfCurrentMonth()
-{
-    int dateFrom, dateTo;
-
-    dateTo = Date::getTodayDate();
-    dateFrom = (dateTo / 100) * 100 + 1;
-
-    showTransactions(dateFrom, dateTo);
-    system("pause");
-}
-
-void BudgetMeneger::showBalanceOfPreviousMonth()
-{
-    int dateFrom, dateTo;
-
-    dateTo = Date::getLastDayOfPreviousMonth();
-    dateFrom = (dateTo / 100) * 100 + 1;
-
-    showTransactions(dateFrom, dateTo);
-    system("pause");
-}
-
-void BudgetMeneger::showBalanceOfSelectedPeriod()
-{
-    int dateFrom, dateTo;
-
-    system("cls");
-    cout << "Wybierz okres czasu." << endl << "Od: ";
-    dateFrom = Date::selectDate();
-
-    cout << endl << "do: ";
-    dateTo = Date::selectDate();
-
-    showTransactions(dateFrom, dateTo);
-    system("pause");
 }
 
 void BudgetMeneger::showTransactions(int dateFrom, int dateTo)

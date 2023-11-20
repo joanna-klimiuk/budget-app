@@ -14,12 +14,12 @@ class Date
     static bool isDateCorrect(string dateString);
     static bool isYearLeap(int year);
     static int maxDayNumber(int month, int year);
+    static int convertStringDateToInt(string dateString);
 
 public:
+    static int getLastDayOfPreviousMonth();
     static int getTodayDate();
     static int selectDate();
-    static int convertStringDateToInt(string dateString);
-    static int getLastDayOfPreviousMonth();
     static string addDashesAndChangeDateToString(int dateInt);
 };
 

@@ -26,7 +26,6 @@ public:
     }
 
     void userRegister();
-  //  void displayAllUsers();
     void userLogIn();
     bool isUserLoggedIn();
     void userLogOut();
@@ -40,17 +39,4 @@ public:
 
     char selectOptionsFromMainMenu();
     char selectOptionFromAppMenu();
-
-
-
-  /*
-    void dodajAdresata();
-    void wyswietlWszystkichAdresatow();
-    bool czyUzytkownikJestZalogowany();
-    char wybierzOpcjeZMenuGlownego();
-    char wybierzOpcjeZMenuUzytkownika();
-    void usunAdresata();
-    void edytujAdresata();
-    void wyszukajAdresatowPoImieniu();
-    void wyszukajAdresatowPoNazwisku();*/
 };

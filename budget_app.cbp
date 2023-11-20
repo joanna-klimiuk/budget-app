@@ -40,7 +40,6 @@
 		<Unit filename="Date.h" />
 		<Unit filename="Markup.cpp" />
 		<Unit filename="Markup.h" />
-		<Unit filename="TextFile.h" />
 		<Unit filename="Transaction.cpp" />
 		<Unit filename="Transaction.h" />
 		<Unit filename="TransactionFile.cpp" />

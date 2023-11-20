@@ -31,31 +31,14 @@ int Date::selectDate()
     return convertStringDateToInt(dateString);
 }
 
-int Date::convertStringDateToInt(string dateString)
+string Date::addDashesAndChangeDateToString(int dateInt)
 {
-    string DateWithoutDashes = dateString.erase(4,6) + dateString.substr(5,2) + dateString.substr(8,2);
+    string dateWithDashes;
+    dateWithDashes = AuxiliaryMethods::convertIntToString(dateInt);
+    dateWithDashes.insert(6,"-");
+    dateWithDashes.insert(4,"-");
 
-    return AuxiliaryMethods::convertStringToInt(DateWithoutDashes);
-}
-
-int Date::getLastDayOfPreviousMonth()
-{
-    int today = getTodayDate();
-    int previousMonth, year;
-
-    if ((today / 100) % 100 == 1)
-    {
-        year = (today / 10000) - 1;
-        return year * 10000 + 1231;
-    }
-
-    else
-    {
-        previousMonth = (today % 10000) - 1;
-        year = today / 10000;
-        return year * 10000 + previousMonth * 100 + maxDayNumber(previousMonth, year);
-    }
-
+    return dateWithDashes;
 }
 
 bool Date::isDateCorrect(string dateString)
@@ -138,12 +121,29 @@ bool Date::isYearLeap(int year)
         return false;
 }
 
-string Date::addDashesAndChangeDateToString(int dateInt)
+int Date::convertStringDateToInt(string dateString)
 {
-    string dateWithDashes;
-    dateWithDashes = AuxiliaryMethods::convertIntToString(dateInt);
-    dateWithDashes.insert(6,"-");
-    dateWithDashes.insert(4,"-");
+    string DateWithoutDashes = dateString.erase(4,6) + dateString.substr(5,2) + dateString.substr(8,2);
 
-    return dateWithDashes;
+    return AuxiliaryMethods::convertStringToInt(DateWithoutDashes);
+}
+
+int Date::getLastDayOfPreviousMonth()
+{
+    int today = getTodayDate();
+    int previousMonth, year;
+
+    if ((today / 100) % 100 == 1)
+    {
+        year = (today / 10000) - 1;
+        return year * 10000 + 1231;
+    }
+
+    else
+    {
+        previousMonth = (today % 10000) - 1;
+        year = today / 10000;
+        return year * 10000 + previousMonth * 100 + maxDayNumber(previousMonth, year);
+    }
+
 }
